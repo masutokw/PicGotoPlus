@@ -7,11 +7,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Controls, Forms, Graphics,
-  Dialogs, EnhEdits, Telescope, IniFiles, Mask, ptool, DateUtils,
-  Joystickex, Buttons, DdeMan, math, mmsystem, ExtCtrls,system.types,system.StrUtils,
+  Dialogs, Telescope, IniFiles, Mask, ptool, DateUtils,
+  Buttons, DdeMan, math, mmsystem,  ExtCtrls,system.types,system.StrUtils,
 
   StdCtrls, ComCtrls, JvHidControllerClass, ScktComp, adpInstanceControl,
-  Vcl.XPMan, JvComponentBase, tagraph, registry, Vcl.Themes;
+  Vcl.XPMan, JvComponentBase, tagraph, EnhEdits,Joystickex, registry, Vcl.Themes;
 //
 
 type
@@ -348,7 +348,7 @@ type
     Label30: TLabel;
     DdeClientConv1: TDdeClientConv;
     DdeClientItem1: TDdeClientItem;
-    LX200Server: TServerSocket;
+   // LX200Server: TServerSocket;
     Joystickex1: TJoystickex;
     Buttonclose: TButton;
     Button17: TButton;
@@ -379,8 +379,6 @@ type
     GroupBox3: TGroupBox;
     CheckBoxJoyF: TCheckBox;
     CheckBox5: TCheckBox;
-    LongEdit11: TLongEdit;
-    LongEdit12: TLongEdit;
     Timer1: TTimer;
     Panel3: TPanel;
     Button20: TButton;
@@ -419,8 +417,18 @@ type
     Label4: TLabel;
     Button13: TButton;
     RadioPresc16: TRadioButton;
+    lx200server: TServerSocket;
+    FloatEditPE: TFloatEdit;
+    Button22: TButton;
+    FloatEditPE2: TFloatEdit;
+    FloatEditphase: TFloatEdit;
+    RadioGroup1: TRadioGroup;
+    Button23: TButton;
+    Label6: TLabel;
     procedure SaveSetting;
     procedure ReadSettings;
+    procedure Save_Mount;
+     procedure Read_Mount;
     procedure DrawPELine;
     procedure update;
     procedure updatealtaz(aligned: boolean);
@@ -648,6 +656,10 @@ type
 
     procedure RadioButtonsidClick(Sender: TObject);
     procedure Button13Click(Sender: TObject);
+    procedure Button22Click(Sender: TObject);
+    procedure Button23Click(Sender: TObject);
+
+
 
 
 
@@ -694,6 +706,7 @@ var
   idar, msg2, iddec, msg3: Longword;
   Ra_thread1, Dec_thread, dec1, dec2, lclock: Integer;
   s_inipath: string;
+  inifile_name:string;
   radiotag: Longint;
   vaz, val: extended;
   legend: string;
@@ -863,7 +876,7 @@ begin
   Tele.Aceleration := CheckBox2.Checked;
   Altcontrol := TRUE;
   Azcontrol := TRUE;
-  fillPECfour;
+  //fillPECfour;
   // begin
 
   r := GetTimezoneInformation(timezoneinfo);
@@ -874,6 +887,13 @@ begin
     dlts := -timezoneinfo.DaylightBias DIV 60;
   end;
   Label34.Caption := inttostr(timezoneinfo.Bias + timezoneinfo.standardBias);
+   read_mount;
+   case radiogroup1.ItemIndex of
+  0: inifile_name:='picgoto.ini';
+  1: inifile_name:='picgoto2.ini';
+  2: inifile_name:='picgoto3.ini';
+  else inifile_name:='picgoto.ini';
+   end;
   ReadSettings;
   Timer1.Interval := LongEditpoll.Value;
   Tele.GetMount(LongEditGearAr.Value, LongEditGearDe.Value,
@@ -930,6 +950,7 @@ begin
   Tele.forbidden_min_dec := LongEditforb_min_dec.Value * SIDERALF;
   Tele.forbidden_max_dec := LongEditForb_max_dec.Value * SIDERALF;
   Tele.forbidden_enable := CheckBoxZone.Checked;
+   fillPECfour;
   InitThread;
 
 end;
@@ -1294,7 +1315,7 @@ var
   inifile: TiniFile;
 begin
 
-  inifile := TiniFile.create(s_inipath + 'picgoto.ini');
+  inifile := TiniFile.create(s_inipath + inifile_name);
   with inifile do
   begin
 
@@ -1415,6 +1436,9 @@ begin
       LongEdittRotFFspeed.Value, LongEditAux1.Value, LongEditAux2.Value,
       LongEditAux3.Value, LongEditAux4.Value, LongEditaux5.Value,
       LongEditaux6.Value, LongEditaux7.Value, LongEditaux8.Value);
+      writefloat('PEC','main',FloatEditPE.Value);
+      writefloat('PEC','secondary' , FloatEditPE2.Value);
+      writefloat('PEC','phase', FloatEditphase.Value);
   end;
   inifile.Free;
 end;
@@ -1424,7 +1448,7 @@ var
   inifile: TiniFile;
   temp:integer;
 begin
-  inifile := TiniFile.create(s_inipath + 'picgoto.ini');
+  inifile := TiniFile.create(s_inipath + inifile_name);
   with inifile do
   begin
     LongEditGearAr.Value := ReadInteger('Telescope', 'Ragear', 180);
@@ -1524,7 +1548,10 @@ begin
     LongEditForb_max.Value := ReadInteger('Telescope', 'FzoneMax', 120);
     LongEditForb_max_dec.Value := ReadInteger('Telescope', 'FzoneMaxDec', 120);
     CheckBoxZone.Checked := readbool('Telescope', 'FzoneEnable', FALSE);
-
+    FloatEditPE.Value:=readfloat('PEC','main',20.0);
+    FloatEditPE2.Value:=readfloat('PEC','secondary',0.0);
+    FloatEditphase.Value:=readfloat('PEC','phase',0.0);
+    
   end;
   inifile.Free;
 end;
@@ -2313,6 +2340,8 @@ begin
   Tele.target_ra_speed := (FloatEdit1.Value);
 end;
 
+
+
 procedure TMain.TrackBar1Change(Sender: TObject);
 begin
   Tele.target_ra_speed := (TrackBar1.position * 30.0 - 3 * 3600.0);
@@ -3058,11 +3087,25 @@ begin
   Button21.Enabled := FALSE;
 end;
 
+procedure TMain.Button22Click(Sender: TObject);
+begin
+ Serie.Destroy;
+ Seriespd.Destroy;
+fillPECfour();
+end;
+
+procedure TMain.Button23Click(Sender: TObject);
+begin
+save_mount;
+end;
+
 procedure TMain.TabSheet8Show(Sender: TObject);
 begin
   Panel3.Visible := TRUE;
   GroupBoxcoords.Visible := TRUE;
 end;
+
+
 
 procedure TMain.TabSheet8Hide(Sender: TObject);
 begin
@@ -3559,7 +3602,14 @@ procedure TMain.fillPECfour();
 var
   i: Integer;
   X: double;
+  periodo: Integer;
+  PE_module,PE_msec,periodosec,phase:double;
 begin
+  periodo:=(24*3600)div LongEditGearAr.Value;
+  periodosec:=floateditredar.Value;
+  phase:=floateditphase.value*(PI/180.0)  ;
+  PE_module:=floateditpe.Value;
+  PE_msec:=floateditpe2.Value;
   Serie := TTASerie.create(TAChartPEC);
   seriespd := TTASerie.create(TAChartPEC);
   Serie.SetColor(1, clred);
@@ -3569,14 +3619,17 @@ begin
   // Serie.ShowLines:=true;
   Serie.ShowPoints := FALSE;
   Serie.Title := 'Sinus';
-  for i := 1 to 480 do
+  for i := 1 to periodo do
 
   begin
-    X := i * (2 * pi / 480.0);
-      Serie.AddXY(i, 20 * sin(X) +4 * sin((X) * 6)  , clred);
-    seriespd.AddXY(i, (20 * cos(X)+4  * 6 * cos((X) * 6) ) * (2 * pi / 480.0)/1.25, clyellow);
+    X := i * (2 * pi / periodo);
+      Serie.AddXY(i, PE_module * sin(X) + PE_msec*(sin (X*periodosec+phase))  , clred);
+      seriespd.AddXY(i, (PE_module * cos(X)+PE_msec*(periodosec)*cos(X*periodosec+phase)) * (2 * pi / periodo)/1, clyellow);
+    //seriespd.AddXY(i, (PE_module * cos(X)+PE_msec*(periodosec)*cos(X*periodosec+phase)) * (2 * pi / periodo)/1.25, clyellow);
+    //  Serie.AddXY(i, PE_module * sin(X) +4 * sin((X) * 12)  , clred);
+   // seriespd.AddXY(i, (PE_module * cos(X)+4  * 6 * cos((X) * 12) ) * (2 * pi / periodo)/1.25, clyellow);
   //  Serie.AddXY(i, 20 * sin(X) + 4 * sin((X) * 12) + 2 * sin(X * 47), clred);
-    //seriespd.AddXY(i, (20 * cos(X) + 4 * 12 * cos((X) * 12) + 2 * 47 *
+   // seriespd.AddXY(i, (20 * cos(X) + 4 * 12 * cos((X) * 12) + 2 * 47 *
   //    cos(X * 47)) * (2 * pi / 480.0)/1.25, clyellow);
     // series2.AddXY(n, 20 * cos((n + 30) * pi / 180.0) - 0 * sin(n * (pi / 30))+ 0 * sin(n * (pi / 3)), '', clgreen);
     // series3.AddXY(n,(series1.YValue[n]-series1.YValue[n-1]),'',clgreen);
@@ -3608,7 +3661,7 @@ begin
   Serie.Title := 'Sinus';
     SL := TStringList.Create;
   try
-    SL.LoadFromFile('jose.txt');
+    SL.LoadFromFile('mypec.txt');
     for i := first to SL.Count - 1 do
     begin
       items := SplitString(SL[i], #9#32);
@@ -3642,8 +3695,7 @@ begin
 
   // angle:=(angle*360)div tele.pe_size;
   angle := round(Tele.worm_angle);
-
-  Label65.Caption := inttostr(round(angle / 1.33)) + #10#13 +
+     Label65.Caption := inttostr(round(angle / (240/LongEditGearAr.Value ))) + #10#13 +
     Format('PE:%3f4"', [Serie.GetYValue(angle)]) + #10#13 +
     Format('Speed:%3f4', [SIDERALF - seriespd.GetYValue(angle)]);
   Canvas.Pen.Color := clwhite;
@@ -3652,7 +3704,20 @@ begin
   // tachartPEC.Repaint;
   TAChartPEC.Canvas.Pen.Mode := pmxor;
    if (abs(Tele.target_ra_speed )<  (2*SIDERALF))then
-  Tele.target_ra_speed := SIDERALF - seriespd.GetYValue(angle);
+     case tele.baserate of
+    0:
+      tele.target_ra_speed := SIDERALF - seriespd.GetYValue(angle);
+    2:
+      tele.target_ra_speed := SOLARF- seriespd.GetYValue(angle);
+    1:
+      tele.target_ra_speed := LUNARF - seriespd.GetYValue(angle);
+    3:
+      tele.target_ra_speed := KINGF -seriespd.GetYValue(angle);
+    4:
+      tele.target_ra_speed := 0;
+  end;
+ // Tele.target_ra_speed := SIDERALF - seriespd.GetYValue(angle);
+ //  Tele.target_ra_speed
   c := 0; // Series1.CalcYPos( );
   With TAChartPEC do
   begin
@@ -3691,6 +3756,40 @@ begin
   finally
     reg.Free;
   end;
+end;
+
+procedure TMain.Save_Mount;
+var
+  inifile: TiniFile;
+begin
+
+  inifile := TiniFile.create(s_inipath + 'mount.ini');
+  with inifile do
+  begin
+
+    writeinteger('Mount', 'index', RadioGroup1.ItemIndex);
+
+  end;
+  inifile.Free;
+end;
+
+procedure TMain.Read_mount;
+var
+  inifile: TiniFile;
+  temp:integer;
+begin
+  inifile := TiniFile.create(s_inipath + 'mount.ini');
+  with inifile do
+  begin
+        RadioGroup1.ItemIndex :=Readinteger('Mount', 'index',0);
+  end;
+  inifile.Free;
+ { case radiogroup1.ItemIndex of
+  0: inifile_name:='picgoto.ini';
+  1: inifile_name:='picgoto2.ini';
+  2: inifile_name:='picgoto3.ini';  }
+
+
 end;
 
 end.

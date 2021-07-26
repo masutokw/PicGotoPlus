@@ -5,9 +5,9 @@ object Main: TMain
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsToolWindow
-  Caption = 'PicGoto++ Server v2.2.30'
+  Caption = 'PicGoto++ Server v2.2.31'
   ClientHeight = 294
-  ClientWidth = 518
+  ClientWidth = 517
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -721,7 +721,7 @@ object Main: TMain
     Width = 394
     Height = 242
     Hint = 'Set Coords'
-    ActivePage = TabSheet1
+    ActivePage = TabSheet4
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -1509,9 +1509,9 @@ object Main: TMain
       ImageIndex = 1
       object GroupBoxAxis: TGroupBox
         Left = 0
-        Top = 2
+        Top = -1
         Width = 237
-        Height = 110
+        Height = 125
         Hint = 'Save Settings into PIC '
         Caption = 'Telescope Axis'
         Font.Charset = ANSI_CHARSET
@@ -1722,7 +1722,7 @@ object Main: TMain
         end
         object Save: TButton
           Left = 127
-          Top = 87
+          Top = 79
           Width = 41
           Height = 18
           Hint = 'Save Configuration on disk'
@@ -1740,7 +1740,7 @@ object Main: TMain
         end
         object ButtonSaveEEprom: TButton
           Left = 174
-          Top = 87
+          Top = 79
           Width = 59
           Height = 18
           Hint = 'Save settings on EEPROM'
@@ -2368,63 +2368,21 @@ object Main: TMain
           ParentFont = False
           TabOrder = 8
         end
-        object LongEdit11: TLongEdit
-          Left = 41
-          Top = 58
-          Width = 35
-          Height = 20
-          Hint = '0..1000'
-          Ctl3D = False
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentCtl3D = False
-          ParentFont = False
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 9
-          Visible = False
-          Value = 16
-          MaxValue = 1000
-        end
-        object LongEdit12: TLongEdit
-          Left = 79
-          Top = 58
-          Width = 35
-          Height = 20
-          Hint = '0..1000'
-          Ctl3D = False
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentCtl3D = False
-          ParentFont = False
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 10
-          Visible = False
-          Value = 16
-          MaxValue = 1000
-        end
         object Checkboxgoto: TCheckBox
-          Left = 12
-          Top = 59
-          Width = 33
+          Left = 51
+          Top = 61
+          Width = 54
           Height = 17
           Caption = 'Lineal'
           Checked = True
           State = cbChecked
-          TabOrder = 11
+          TabOrder = 9
           OnClick = CheckboxgotoClick
         end
       end
       object GroupBox2: TGroupBox
-        Left = 1
-        Top = 113
+        Left = -2
+        Top = 118
         Width = 236
         Height = 56
         Caption = 'PIC Tips'
@@ -2517,8 +2475,8 @@ object Main: TMain
         end
       end
       object Radiomount: TRadioGroup
-        Left = 2
-        Top = 169
+        Left = -2
+        Top = 174
         Width = 235
         Height = 36
         Caption = 'Mount type'
@@ -2534,10 +2492,6 @@ object Main: TMain
     object TabSheet4: TTabSheet
       Caption = 'Conf'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label25: TLabel
         Left = 10
         Top = 147
@@ -2899,7 +2853,7 @@ object Main: TMain
           OnClick = Button_locClick
         end
         object CheckBoxDLST: TCheckBox
-          Left = 6
+          Left = 3
           Top = 97
           Width = 45
           Height = 17
@@ -2936,7 +2890,7 @@ object Main: TMain
         end
       end
       object GroupBoxHid: TGroupBox
-        Left = 203
+        Left = 204
         Top = 123
         Width = 179
         Height = 87
@@ -3012,10 +2966,6 @@ object Main: TMain
     object TabSheet5: TTabSheet
       Caption = 'F/W'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox13: TGroupBox
         Left = 0
         Top = -1
@@ -3638,10 +3588,6 @@ object Main: TMain
     object TabSheet6: TTabSheet
       Caption = 'Motors'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBoxRaMotors: TGroupBox
         Left = 1
         Top = 7
@@ -4142,10 +4088,6 @@ object Main: TMain
     object TabSheet7: TTabSheet
       Caption = 'Spy '
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox8: TGroupBox
         Left = 6
         Top = 4
@@ -4272,8 +4214,8 @@ object Main: TMain
         Caption = 'Stepper Settings'
         TabOrder = 1
         object Label11: TLabel
-          Left = 45
-          Top = 64
+          Left = 21
+          Top = 62
           Width = 26
           Height = 14
           Alignment = taRightJustify
@@ -4322,8 +4264,8 @@ object Main: TMain
           Caption = 'DE'
         end
         object Label63: TLabel
-          Left = 45
-          Top = 87
+          Left = 21
+          Top = 85
           Width = 25
           Height = 14
           Alignment = taRightJustify
@@ -4347,8 +4289,8 @@ object Main: TMain
           Value = 15.010000000000000000
         end
         object TrackBar1: TTrackBar
-          Left = 75
-          Top = 61
+          Left = 51
+          Top = 59
           Width = 301
           Height = 19
           Max = 720
@@ -4374,8 +4316,8 @@ object Main: TMain
           OnClick = Button9Click
         end
         object TrackBar2: TTrackBar
-          Left = 75
-          Top = 84
+          Left = 51
+          Top = 82
           Width = 301
           Height = 19
           Max = 720
@@ -4477,8 +4419,8 @@ object Main: TMain
           StyleElements = [seClient, seBorder]
         end
         object Label59: TLabel
-          Left = 61
-          Top = 47
+          Left = 62
+          Top = 42
           Width = 27
           Height = 14
           Caption = 'unset'
@@ -4641,10 +4583,6 @@ object Main: TMain
       ImageIndex = 7
       OnHide = TabSheet8Hide
       OnShow = TabSheet8Show
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox9: TGroupBox
         Left = 0
         Top = 0
@@ -4674,7 +4612,7 @@ object Main: TMain
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           ShowAxisLabel = False
-          ShowVerticalReticule = False
+          ShowVerticalReticule = True
           ShowReticule = False
           Color = clGray
           ParentColor = False
@@ -4684,27 +4622,23 @@ object Main: TMain
     object align: TTabSheet
       Caption = 'Align'
       ImageIndex = 8
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox17: TGroupBox
         Left = 6
         Top = 4
-        Width = 370
-        Height = 198
+        Width = 377
+        Height = 109
         Caption = 'Align'
         TabOrder = 0
         object GroupBox18: TGroupBox
-          Left = 19
+          Left = 3
           Top = 14
-          Width = 185
-          Height = 174
-          Caption = 'Align'
+          Width = 201
+          Height = 82
+          Caption = 'Set'
           TabOrder = 0
           object Label28: TLabel
-            Left = 12
-            Top = 133
+            Left = 108
+            Top = 18
             Width = 90
             Height = 14
             Caption = '00;00:00 00'#186'00"00'
@@ -4721,8 +4655,8 @@ object Main: TMain
           end
           object RadioButton3: TRadioButton
             Tag = 2
-            Left = 12
-            Top = 57
+            Left = 60
+            Top = 36
             Width = 50
             Height = 17
             Caption = 'Star2'
@@ -4731,8 +4665,8 @@ object Main: TMain
           end
           object Radiostar3: TRadioButton
             Tag = 3
-            Left = 12
-            Top = 78
+            Left = 116
+            Top = 36
             Width = 50
             Height = 17
             Caption = 'Star3'
@@ -4741,8 +4675,8 @@ object Main: TMain
           end
           object Radionoalign: TRadioButton
             Left = 12
-            Top = 15
-            Width = 113
+            Top = 16
+            Width = 85
             Height = 17
             Caption = 'No align mode'
             Checked = True
@@ -4751,8 +4685,8 @@ object Main: TMain
             OnClick = RadionoalignClick
           end
           object Buttongetzenith: TButton
-            Left = 74
-            Top = 101
+            Left = 69
+            Top = 59
             Width = 69
             Height = 20
             Caption = 'Virtual pole'
@@ -4760,8 +4694,8 @@ object Main: TMain
             OnClick = ButtongetzenithClick
           end
           object Button_align: TButton
-            Left = 9
-            Top = 101
+            Left = 3
+            Top = 59
             Width = 60
             Height = 20
             Caption = 'Align now!'
@@ -4773,19 +4707,19 @@ object Main: TMain
           Left = 207
           Top = 15
           Width = 152
-          Height = 171
+          Height = 81
           Caption = 'Init'
           TabOrder = 1
           object Label27: TLabel
             Left = 12
-            Top = 127
+            Top = 36
             Width = 33
             Height = 14
             Caption = 'Coorrs'
           end
           object Label26: TLabel
             Left = 10
-            Top = 149
+            Top = 58
             Width = 7
             Height = 14
             Caption = 'Z'
@@ -4801,7 +4735,7 @@ object Main: TMain
           end
           object FloatEditz1: TFloatEdit
             Left = 20
-            Top = 148
+            Top = 57
             Width = 40
             Height = 20
             Hint = '0..10000'
@@ -4820,7 +4754,7 @@ object Main: TMain
           end
           object FloatEditz2: TFloatEdit
             Left = 63
-            Top = 148
+            Top = 57
             Width = 40
             Height = 20
             Hint = '0..10000'
@@ -4839,7 +4773,7 @@ object Main: TMain
           end
           object FloatEditz3: TFloatEdit
             Left = 107
-            Top = 148
+            Top = 57
             Width = 40
             Height = 20
             Hint = '0..10000'
@@ -4857,15 +4791,36 @@ object Main: TMain
             MaxValue = 10000.000000000000000000
           end
           object Button14: TButton
-            Left = 8
-            Top = 44
-            Width = 69
+            Left = 94
+            Top = 13
+            Width = 55
             Height = 20
             Caption = 'Set Init'
             TabOrder = 4
             OnClick = ButtongetzenithClick
           end
         end
+      end
+      object RadioGroup1: TRadioGroup
+        Left = 3
+        Top = 106
+        Width = 163
+        Height = 87
+        Caption = 'RadioGroup1'
+        Items.Strings = (
+          'Mount 1'
+          'Mount 2'
+          'Mount 3')
+        TabOrder = 1
+      end
+      object Button23: TButton
+        Left = 106
+        Top = 119
+        Width = 49
+        Height = 25
+        Caption = 'Set'
+        TabOrder = 2
+        OnClick = Button23Click
       end
     end
   end
@@ -4983,7 +4938,7 @@ object Main: TMain
     OnClick = ButtonfoldClick
   end
   object Panel3: TPanel
-    Left = 126
+    Left = 125
     Top = 248
     Width = 392
     Height = 46
@@ -5015,9 +4970,22 @@ object Main: TMain
       Font.Style = []
       ParentFont = False
     end
+    object Label6: TLabel
+      Left = 184
+      Top = 28
+      Width = 103
+      Height = 14
+      Caption = '  mag1  mag2   phase'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
     object Button20: TButton
-      Left = 331
-      Top = 1
+      Left = 339
+      Top = 29
       Width = 50
       Height = 15
       Caption = 'Show'
@@ -5031,8 +4999,8 @@ object Main: TMain
       OnClick = Button20Click
     end
     object Button19: TButton
-      Left = 228
-      Top = 2
+      Left = 339
+      Top = 0
       Width = 50
       Height = 15
       Caption = 'Reset'
@@ -5046,9 +5014,9 @@ object Main: TMain
       OnClick = Button19Click
     end
     object CheckBoxPec: TCheckBox
-      Left = 143
-      Top = 25
-      Width = 51
+      Left = 293
+      Top = 24
+      Width = 40
       Height = 17
       Caption = 'PEC'
       Font.Charset = ANSI_CHARSET
@@ -5060,8 +5028,8 @@ object Main: TMain
       TabOrder = 2
     end
     object Button13: TButton
-      Left = 280
-      Top = 2
+      Left = 339
+      Top = 14
       Width = 50
       Height = 15
       Caption = 'Load'
@@ -5074,24 +5042,65 @@ object Main: TMain
       TabOrder = 3
       OnClick = Button13Click
     end
+    object FloatEditPE: TFloatEdit
+      Left = 184
+      Top = 0
+      Width = 32
+      Height = 22
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+      Value = 10.000000000000000000
+    end
+    object Button22: TButton
+      Left = 291
+      Top = 0
+      Width = 34
+      Height = 18
+      Caption = 'Set '
+      TabOrder = 5
+      OnClick = Button22Click
+    end
+    object FloatEditPE2: TFloatEdit
+      Left = 221
+      Top = 0
+      Width = 33
+      Height = 22
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+      Value = 4.000000000000000000
+    end
+    object FloatEditphase: TFloatEdit
+      Left = 258
+      Top = 0
+      Width = 29
+      Height = 22
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+      Value = 4.000000000000000000
+    end
   end
   object DdeClientConv1: TDdeClientConv
-    Left = 468
-    Top = 248
+    Left = 268
+    Top = 264
   end
   object DdeClientItem1: TDdeClientItem
-    Left = 456
-    Top = 241
-  end
-  object LX200Server: TServerSocket
-    Active = False
-    Port = 10000
-    ServerType = stNonBlocking
-    OnClientConnect = LX200ServerAccept
-    OnClientDisconnect = LX200ServerClientDisconnect
-    OnClientRead = LX200ServerClientRead
-    Left = 444
-    Top = 255
+    Left = 264
+    Top = 257
   end
   object Joystickex1: TJoystickex
     GamePort = Gameport1
@@ -5110,25 +5119,32 @@ object Main: TMain
     OnButton4_Change = Joystickex1Button4_Change
     OnButton5_Change = Joystickex1Button5_Change
     JoyMove = Joystickex1JoyMove
-    Left = 458
-    Top = 254
+    Left = 266
+    Top = 262
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 457
-    Top = 245
+    Left = 265
+    Top = 269
   end
   object adpInstanceControl1: TadpInstanceControl
     Enabled = True
     MaxInstances = 1
-    Left = 465
-    Top = 249
+    Left = 265
+    Top = 265
   end
   object JvHidDeviceController: TJvHidDeviceController
     DevPollingDelayTime = 10
     OnEnumerate = JvHidDeviceControllerEnumerate
     OnDeviceChange = JvHidDeviceControllerDeviceChange
-    Left = 472
-    Top = 253
+    Left = 272
+    Top = 261
+  end
+  object lx200server: TServerSocket
+    Active = False
+    Port = 0
+    ServerType = stNonBlocking
+    Left = 270
+    Top = 264
   end
 end

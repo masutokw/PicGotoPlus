@@ -1163,7 +1163,7 @@ var
   outp: String;
   count: Integer;
 begin
-  SetMotorCounter(DEVICE_AR, 0);
+  SetMotorCounter(DEVICE_AR, encoderRares div 2);
   sleep(20);
   SetMotorCounter(DEVICE_DE, EncoderDecRes DIV 8);
   sleep(20);
@@ -2200,7 +2200,7 @@ begin
   if angle <0.0 then angle :=pe_size+angle;
   if angle < 0.0 then
     angle := 360.0 + angle;
-  angle := (angle * 480.0) / pe_size;
+  angle := (angle * (86400.0/ARgear)) / pe_size;
   result := angle;
 end;
 

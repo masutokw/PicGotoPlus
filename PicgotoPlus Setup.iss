@@ -4,10 +4,10 @@
 ;
 [Setup]
 AppName=ASCOM PicgotoPlus Telescope Driver
-AppVerName=ASCOM PicgotoPlus Telescope Driver 2.2.30
+AppVerName=ASCOM PicgotoPlus Telescope Driver 2.2.31
 AppPublisherURL=mailto:masutokw@yahoo.es
-AppSupportURL=http://es.groups.yahoo.com/group/Picgotogroup
-AppUpdatesURL=http://es.groups.yahoo.com/group/Picgotogroup/files/Picgoto%20%2B%2B/
+AppSupportURL=https://groups.io/g/PicgotoGroup
+AppUpdatesURL=http://https://groups.io/g/PicgotoGroup/files
 MinVersion=0,5.0.2195sp4
 
 DefaultDirName="{%USERPROFILE}\PicgotoPlus"
