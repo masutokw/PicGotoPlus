@@ -193,7 +193,7 @@ type
     function decguide: Integer;
     function arguide: Integer;
     procedure changeM(piersideeast: Boolean);
-    procedure setzeropec();
+    procedure setzeropec(angle:integer);
     function worm_angle(): Real;
     function ReturnAr(b: Boolean; Dst: Real): String; overload;
     function PicTime(): cardinal;
@@ -509,8 +509,63 @@ procedure TTelescope.GotoAr(Ar: Integer);
 begin
   SetMotorTarget(DEVICE_AR, Ar);
 end;
-
+{
 // -----------------------------------------------------------------------
+function TTelescope.GetPos;
+var
+  artemp, dectemp, focustemp, auxtemp: Integer;
+  n,checka, checkd: byte;
+
+begin
+
+ purgebuffer(port);
+  ReadCounters(DEVICE_AR);
+  sleep(15);
+  ReadCounters(DEVICE_DE);
+//  repeat
+// sleep(5);
+//   inc(n);
+ // if (serial_available()<17) then sleep (50)  ;
+ 
+  if GetCounters(artemp, focustemp, checka) and ((checka = 44) or (checka= DEVICE_AR))then
+  begin
+    ArPos := artemp;
+    ARCurrent := (ArPos * ArStepSize);
+    focuspos := focustemp;
+  end
+  else if (checka= DEVICE_DE) then
+    begin
+    deccounter := dectemp;
+    if dectemp > (EncoderDecRes div 2) then
+      dectemp := dectemp - EncoderDecRes;
+
+    DecPos := dectemp;
+    auxpos := auxtemp;
+    DecCurrent := (DecPos * DecStepSize)
+  end;
+
+  if GetCounters(dectemp, auxtemp, checkd) and ((checkd = 44) or (checkd= DEVICE_DE)) then
+  begin
+    deccounter := dectemp;
+    if dectemp > (EncoderDecRes div 2) then
+      dectemp := dectemp - EncoderDecRes;
+
+    DecPos := dectemp;
+    auxpos := auxtemp;
+    DecCurrent := (DecPos * DecStepSize)
+  end else if (checkd= DEVICE_AR)then
+    begin
+    ArPos := artemp;
+    ARCurrent := (ArPos * ArStepSize);
+    focuspos := focustemp;
+  end;
+
+  //purgebuffer(port);
+  result := inttostr(checka * 100 + checkd);
+
+end;
+ }
+//{
 function TTelescope.GetPos;
 var
   artemp, dectemp, focustemp, auxtemp: Integer;
@@ -518,21 +573,19 @@ var
 begin
 
   purgebuffer(port);
+   ReadCounters(DEVICE_AR);
   // sleep(10);
-  ReadCounters(DEVICE_AR);
-   sleep(10);
-  if GetCounters(artemp, focustemp, checka) and (checka = 44) then
+  if GetCounters(artemp, focustemp, checka) and( (checka = DEVICE_AR)  or (checka = 44) or (checka = 0)) then
   begin
     ArPos := artemp;
     ARCurrent := (ArPos * ArStepSize);
     focuspos := focustemp;
   end;
-  // purgebuffer(port);
+   purgebuffer(port);
   ;
   ReadCounters(DEVICE_DE);
-  // sleep(50);
-
-  if GetCounters(dectemp, auxtemp, checkd) and (checkd = 44) then
+   //sleep(50);
+  if GetCounters(dectemp, auxtemp, checkd) and( (checkd = DEVICE_DE) or (checkd = 44) )then
   begin
     deccounter := dectemp;
     if dectemp > (EncoderDecRes div 2) then
@@ -542,46 +595,11 @@ begin
     auxpos := auxtemp;
     DecCurrent := (DecPos * DecStepSize)
   end;
-  // purgebuffer(port);
+   purgebuffer(port);
   result := inttostr(checka * 100 + checkd);
 
 end;
-
-{
-  function TTelescope.GetPos;
-  var
-  artemp,dectemp,focustemp,auxtemp,timeaux: Integer;
-  checka,checkd:byte;
-  begin
-
-  purgebuffer(port);
-  // sleep(10);
-  ReadCounters(DEVICE_AR);
-  //sleep(30);
-  if GetCounters(artemp,focustemp,checka) and (checka=44) then
-  begin
-  arpos:=artemp; ARCurrent:=(Arpos*arstepSize);
-  focuspos:=focustemp;
-  end;
-  //purgebuffer(port);
-  ; // sleep(50);
-  ReadCounters(DEVICE_DE);
-
-
-  if GetCountersTime(dectemp,auxtemp,timeaux,checkd) and (checkd=44) then
-  begin
-  deccounter:=dectemp;
-  if dectemp > (encoderDecres div 2) then dectemp := dectemp - encoderDecRes;
-
-  decpos:=dectemp;
-  auxpos := auxtemp;
-  DecCurrent:=(decpos *decstepSize)
-  end;
-  // purgebuffer(port);
-  result := inttostr(checka*100+checkd);
-
-  end; }
-// ---------------------------------------------------------------------------
+ // }
 procedure TTelescope.SetSpeeds;
 begin
   SlewSpeed := S;
@@ -1841,10 +1859,14 @@ begin
   MotorSetPeriod(DEVICE_AR, 1, 0);
 end;
 
-procedure TTelescope.setzeropec();
+procedure TTelescope.setzeropec(angle:integer);
+var temp:integer;
 begin
   GetPos();
-  zeropec := ArPos
+  temp:=arpos-angle;
+  if temp>0 then zeropec:=temp
+
+  else zeropec := temp;
 end;
 
 procedure TTelescope.deblock;
@@ -2209,7 +2231,7 @@ var
   tick: cardinal;
   control: byte;
 begin
-  readtime(253);
+  readtime(DEVICE_AR);
   if GetTime(tick, control) then
     result := tick
   else

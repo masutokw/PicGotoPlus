@@ -12,7 +12,8 @@ function WriteCom(var fh: Thandle; var buf: String; var count: Integer)
 procedure CloseCom(var fh: Thandle);
 
 procedure PurgeBuffer(var fh: Thandle);
-
+//procedure DataInBuffer(Handle: THandle;var InQueue, OutQueue: integer);
+function Bytes_available(Handle: THandle):integer;
 var
   debug: BOOLEAN = FALSE;
 
@@ -122,5 +123,42 @@ procedure CloseCom(var fh: Thandle);
 begin
   CloseHandle(fh);
 end;
+ {
+procedure DataInBuffer(Handle: THandle;
+                       var InQueue, OutQueue: integer);
+var ComStat: TComStat;
+    e: cardinal;
+begin
+  if ClearCommError(Handle, e, @ComStat) then
+  begin
+    InQueue := ComStat.cbInQue;
+    OutQueue := ComStat.cbOutQue;
+  end
+  else
+  begin
+    InQueue := 0;
+    OutQueue := 0;
+  end;
+end;     }
+function Bytes_available(Handle: THandle):integer;
+var ComStat: TComStat;
+    e: cardinal;
+begin
+  if ClearCommError(Handle, e, @ComStat) then
+  begin
+    result := ComStat.cbInQue;
+  end
+  else
+  begin
+    result := 0;
+  end;
+end;
+ function read_cts(Handle:THandle):boolean;
+ var
+ status:dword;
+ begin
+  if GetCommModemStatus(Handle, status) <> false then
+    result:= (status and MS_CTS_ON) <> 0 ;
 
+ end;
 end.

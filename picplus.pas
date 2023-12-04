@@ -2,7 +2,7 @@ unit picplus;
 
 interface
 
-uses Windows, Sysutils;
+uses Windows, Sysutils,serial;
 
 const
   M1_SPEED_SET_CMD = 0;
@@ -118,6 +118,7 @@ type
     function SetAuxBackSlashMode(id, value: byte): boolean;
     function SetLedLevel(id, value: byte): boolean;
     function Set_Motor_Slew_Bit(id, value: byte): boolean;
+     Function serial_available ():integer;
 
 implementation
 
@@ -415,5 +416,9 @@ function Readtime(id: byte): boolean;
 begin
   sendcmd(CMD_FCODE, id, GET_TICKS);
 end;
-
+ Function serial_available ():integer;
+ var  InQueue,OutQueue:integer;
+ begin
+     result:=Bytes_available(fh);
+ end;
 end.

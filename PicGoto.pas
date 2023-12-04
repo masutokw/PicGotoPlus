@@ -11,13 +11,12 @@ uses
   Buttons, DdeMan, math, mmsystem,  ExtCtrls,system.types,system.StrUtils,
 
   StdCtrls, ComCtrls, JvHidControllerClass, ScktComp, adpInstanceControl,
-  Vcl.XPMan, JvComponentBase, tagraph, EnhEdits,Joystickex, registry, Vcl.Themes;
+  Vcl.XPMan, JvComponentBase, tagraph, EnhEdits,Joystickex, registry, Vcl.Themes,
+  IdBaseComponent, IdComponent, IdUDPBase, IdUDPClient;
 //
 
 type
   TMain = class(TForm)
-    GroupBoxControl: TGroupBox;
-    Label1: TLabel;
     PageControlConf: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
@@ -95,20 +94,6 @@ type
     LabelAR1: TLabel;
     LabelDec1: TLabel;
     GroupBox4: TGroupBox;
-    Panel1: TPanel;
-    ButtonNE: TButton;
-    ButtonN: TButton;
-    ButtonNW: TButton;
-    ButtonW: TButton;
-    ButtonSW: TButton;
-    Buttons: TButton;
-    ButtonH: TButton;
-    ButtonE: TButton;
-    ButtonSE: TButton;
-    RadioButtonSlew: TRadioButton;
-    RadioButtonCenter: TRadioButton;
-    RadioButtonFind: TRadioButton;
-    RadioButtonGuide: TRadioButton;
     GroupBoxHost: TGroupBox;
     EditAddr: TEdit;
     ButtonListen: TButton;
@@ -176,15 +161,7 @@ type
     StaticText32: TStaticText;
     StaticText36: TStaticText;
     CheckBoxSmartGoto: TCheckBox;
-    GroupBox11: TGroupBox;
-    LabelFocusCount: TLabel;
-    Button4: TButton;
-    Button5: TButton;
     CheckBox2: TCheckBox;
-    Buttoneye1: TButton;
-    Buttoneye2: TButton;
-    Buttoneye3: TButton;
-    Buttoneye4: TButton;
     GroupBox14: TGroupBox;
     CheckBox1: TCheckBox;
     ButtonConnect: TButton;
@@ -194,8 +171,6 @@ type
     Buttonmm: TButton;
     Buttonfm: TButton;
     Labelfocus: TLabel;
-    Shape1: TShape;
-    ButtonPark: TButton;
     GroupBoxcoords: TGroupBox;
     labelAR: TLabel;
     Labeldec: TLabel;
@@ -206,14 +181,6 @@ type
     RadioPresc4: TRadioButton;
     RadioPresc8: TRadioButton;
     Button3: TButton;
-    GroupBox6: TGroupBox;
-    LabelWheelCount: TLabel;
-    Buttonwheelcc: TButton;
-    Buttonwheelcw: TButton;
-    Buttonaux1: TButton;
-    Buttonaux2: TButton;
-    Buttonaux3: TButton;
-    Buttonaux4: TButton;
     Label11: TLabel;
     GroupBox5: TGroupBox;
     Label22: TLabel;
@@ -278,8 +245,6 @@ type
     LongEditaux5: TLongEdit;
     Label55: TLabel;
     LongEditaux6: TLongEdit;
-    Buttonaux5: TButton;
-    Buttonaux6: TButton;
     Button6: TButton;
     FloatEdit1: TFloatEdit;
     TrackBar1: TTrackBar;
@@ -350,11 +315,8 @@ type
     DdeClientItem1: TDdeClientItem;
    // LX200Server: TServerSocket;
     Joystickex1: TJoystickex;
-    Buttonclose: TButton;
-    Button17: TButton;
     TrackBarLed: TTrackBar;
     memolog: TMemo;
-    Buttonfold: TButton;
     LongEditFocusReset: TLongEdit;
     Label35: TLabel;
     CheckBoxpark: TCheckBox;
@@ -391,8 +353,6 @@ type
     LongEditaux7: TLongEdit;
     Label70: TLabel;
     LongEditaux8: TLongEdit;
-    Buttonaux8: TButton;
-    Buttonaux7: TButton;
     GroupBoxHid: TGroupBox;
     lstHidDevices: TListBox;
     Label71: TLabel;
@@ -401,7 +361,6 @@ type
     JvHidDeviceController: TJvHidDeviceController;
     TAChartPEC: TTAChart;
     Button1: TButton;
-    Button21: TButton;
     Label34: TLabel;
     LongEditwres: TLongEdit;
     GroupBox20: TGroupBox;
@@ -425,6 +384,55 @@ type
     RadioGroup1: TRadioGroup;
     Button23: TButton;
     Label6: TLabel;
+    GroupBox21: TGroupBox;
+    GroupBox11: TGroupBox;
+    LabelFocusCount: TLabel;
+    Button4: TButton;
+    Button5: TButton;
+    Buttoneye1: TButton;
+    Buttoneye2: TButton;
+    Buttoneye3: TButton;
+    Buttoneye4: TButton;
+    GroupBox6: TGroupBox;
+    LabelWheelCount: TLabel;
+    Buttonwheelcc: TButton;
+    Buttonwheelcw: TButton;
+    Buttonaux1: TButton;
+    Buttonaux2: TButton;
+    Buttonaux3: TButton;
+    Buttonaux4: TButton;
+    Buttonaux5: TButton;
+    Buttonaux6: TButton;
+    Buttonaux8: TButton;
+    Buttonaux7: TButton;
+    Panel1: TPanel;
+    Shape1: TShape;
+    ButtonNE: TButton;
+    ButtonN: TButton;
+    ButtonNW: TButton;
+    ButtonW: TButton;
+    ButtonSW: TButton;
+    ButtonS: TButton;
+    ButtonH: TButton;
+    ButtonE: TButton;
+    ButtonSE: TButton;
+    RadioButtonSlew: TRadioButton;
+    RadioButtonCenter: TRadioButton;
+    RadioButtonFind: TRadioButton;
+    RadioButtonGuide: TRadioButton;
+    ButtonPark: TButton;
+    Buttonfold: TButton;
+    Button17: TButton;
+    Buttonclose: TButton;
+    Button21: TButton;
+    IdUDPClientEnc: TIdUDPClient;
+    Button24: TButton;
+    Label1: TLabel;
+    EditUDPaddr: TEdit;
+    Label7: TLabel;
+    Label15: TLabel;
+    Label64: TLabel;
+    Label68: TLabel;
     procedure SaveSetting;
     procedure ReadSettings;
     procedure Save_Mount;
@@ -658,6 +666,11 @@ type
     procedure Button13Click(Sender: TObject);
     procedure Button22Click(Sender: TObject);
     procedure Button23Click(Sender: TObject);
+    procedure CheckBoxPecClick(Sender: TObject);
+    procedure Button24Click(Sender: TObject);
+
+
+
 
 
 
@@ -691,6 +704,9 @@ const
 const
   KINGF = 15.0369;
 
+  const
+  ENCODER_RES =4096;
+
 var
   Main: TMain;
   Tele: Ttelescope;
@@ -716,6 +732,7 @@ var
   seriespd: TTASerie;
   linex: Word;
   pushclientwidth: Word;
+  picpec: Integer;
 function smsg: Integer;
 procedure InitThread;
 procedure initdopulsear;
@@ -921,6 +938,7 @@ begin
   Tele.SetActualSpeed(GUIDE);
   // ----------------------------------------------------------------------
   LX200Server.Port := LongEditPort.Value;
+  IdUDPClientEnc.Host:=editudpaddr.Text;
   LX200Server.Active := TRUE;
   Tele.FocusConfig(FloatEditfocusres.Value, LongEditFocusmax.Value,
     LongEditFocusBack.Value, LongEditFocusfinespeed.Value,
@@ -1043,6 +1061,8 @@ begin
   Tele.RaSlew := FALSE;
   Tele.DeSlew := FALSE;
 end;
+
+
 
 procedure TMain.Timer1Timer(Sender: TObject);
 var
@@ -1184,9 +1204,19 @@ begin
   Label58.Caption := inttostr(lastt);
   lclock := Tele.auxpos;
   rcode := Tele.GetPos;
-  Label4.Caption := rcode;
+  if (rcode='44') or (rcode='253')  then begin
+  Label7.Caption := inttostr(Tele.arpos);
+  picpec:=tele.PicTime;
+  tele.zeropec:=picpec;
+  label64.caption:=inttostr(picpec-strtoint( label15.caption)-tele.pe_size);
+  label15.caption:=inttostr(picpec);
+  label68.caption:=inttostr(picpec)+'  '+inttostr(tele.zeropec);
+
+  //Tele.setZeropec(8000);
+  end;
+  label4.caption:=rcode;
   paint1;
-  if rcode <> '4444' then
+  if (rcode <> '4444') and (rcode <>'25653') and (rcode <>'25654') and (rcode<>'25444') and (rcode<>'44')and (rcode<>'253') then
   begin
     Shape1.brush.Color := clred;
     errorcount1 := errorcount1 + 1;
@@ -1370,6 +1400,7 @@ begin
     WriteString('Serial_Port', 'BaudRate', ComboBoxBps.Text);
     WriteString('Server', 'Host', EditAddr.Text);
     writeinteger('Server', 'Port', LongEditPort.Value);
+    WriteString('Server', 'UDPaddr', EditUDPAddr.Text);
     WriteFloat('PIC', 'Prescaler', FloatEditPrescaler.Value);
     Writebool('PIC', 'Track', CheckRunP.Checked);
     Writebool('PIC', 'Save_on_exit', CheckBoxpark.Checked);
@@ -1500,6 +1531,7 @@ begin
     ComboBoxPort.Text := ReadString('Serial_Port', 'Port', 'com4');
     ComboBoxBps.Text := ReadString('Serial_Port', 'BaudRate', '19200');
     EditAddr.Text := ReadString('Server', 'Host', '127.0.0.1');
+    editudpaddr.Text:=ReadString('Server', 'UDPaddr', '127.0.0.1');
     LongEditPort.Value := ReadInteger('Server', 'Port', 10001);
     FloatEditPrescaler.Value := ReadFloat('PIC', 'Prescaler', 0.40076);
     CheckRunP.Checked := readbool('PIC', 'Track', TRUE);
@@ -1889,7 +1921,7 @@ var
 begin
 
   xyreleased := (Xpos = 1) and (YPos = 1);
-
+ // label32.caption:=inttostr(xpos)+' '+inttostr(Ypos);
   setspeed;
 
   begin
@@ -2004,6 +2036,26 @@ begin
   ButtonchangePWM2.Enabled := CheckBoxNMenable.Checked;
   Button10.Enabled := CheckBoxNMenable.Checked;
   Button11.Enabled := CheckBoxNMenable.Checked;
+end;
+
+
+
+procedure TMain.CheckBoxPecClick(Sender: TObject);
+begin
+//if checkboxpec.Checked then
+    case tele.baserate of
+    0:
+      tele.target_ra_speed := SIDERALF;
+    2:
+      tele.target_ra_speed := SOLARF ;
+    1:
+      tele.target_ra_speed := LUNARF;
+    3:
+      tele.target_ra_speed := KINGF ;
+    4:
+      tele.target_ra_speed := 0;
+  end;
+
 end;
 
 procedure TMain.ButtonCompressClick(Sender: TObject);
@@ -2611,7 +2663,8 @@ var
   procedure paint1;
 
   begin
-    if (connectedl <> 4444) then
+   // if (connectedl <> 4444) then
+  If( (connectedl <> 4444) and (connectedl <>25653) and (connectedl <>25654)) then
     begin // if no read toogle color led
       Shape1.brush.Color := clred;
       errorcount1 := errorcount1 + 1;
@@ -2971,6 +3024,8 @@ begin
   // TStyleManager.TrySetStyle(ComboBox1.Items[1])
 end;
 
+
+
 procedure TMain.TrackBar3Change(Sender: TObject);
 begin
   Main.AlphaBlend := (TrackBar3.position > 0);
@@ -3044,8 +3099,9 @@ end;
 
 procedure TMain.Button19Click(Sender: TObject);
 begin
+
   Tele.pe_size := trunc(Tele.arRed * Tele.Arsteps);
-  Tele.setZeropec();
+  Tele.setZeropec(0);
   Label65.Caption := inttostr(Tele.zeropec);
   // With Chart1 do
   // begin
@@ -3058,6 +3114,7 @@ end;
 
 procedure TMain.Button20Click(Sender: TObject);
 begin
+  // tachartPEC.Repaint;
   DrawPELine;
 end;
 
@@ -3097,6 +3154,23 @@ end;
 procedure TMain.Button23Click(Sender: TObject);
 begin
 save_mount;
+end;
+
+procedure TMain.Button24Click(Sender: TObject);
+
+  var
+  x,s: string;
+  temp:integer;
+begin
+x:='1';
+   IdUDPClientEnc.Send(x)   ;
+    s:= IdUDPClientEnc.ReceiveString();
+    if S='' then
+       s:= IdUDPClientEnc.ReceiveString();
+     label1.caption:=s;
+     temp:=strtoint(s);
+     tele.setzeropec( (tele.pe_size*temp) div ENCODER_RES);
+
 end;
 
 procedure TMain.TabSheet8Show(Sender: TObject);
@@ -3603,9 +3677,10 @@ var
   i: Integer;
   X: double;
   periodo: Integer;
-  PE_module,PE_msec,periodosec,phase:double;
+  PE_module,PE_msec,periodosec,phase,periodof:double;
 begin
-  periodo:=(24*3600)div LongEditGearAr.Value;
+  periodo:=(86164)div LongEditGearAr.Value;
+  periodof:=86164.091 /  LongEditGearAr.Value;
   periodosec:=floateditredar.Value;
   phase:=floateditphase.value*(PI/180.0)  ;
   PE_module:=floateditpe.Value;
@@ -3622,9 +3697,9 @@ begin
   for i := 1 to periodo do
 
   begin
-    X := i * (2 * pi / periodo);
+    X := i * (2 * pi / periodof);
       Serie.AddXY(i, PE_module * sin(X) + PE_msec*(sin (X*periodosec+phase))  , clred);
-      seriespd.AddXY(i, (PE_module * cos(X)+PE_msec*(periodosec)*cos(X*periodosec+phase)) * (2 * pi / periodo)/1, clyellow);
+      seriespd.AddXY(i, (PE_module * cos(X)+PE_msec*(periodosec)*cos(X*periodosec+phase)) * (2.0 * pi*10.0 / periodof), clyellow);
     //seriespd.AddXY(i, (PE_module * cos(X)+PE_msec*(periodosec)*cos(X*periodosec+phase)) * (2 * pi / periodo)/1.25, clyellow);
     //  Serie.AddXY(i, PE_module * sin(X) +4 * sin((X) * 12)  , clred);
    // seriespd.AddXY(i, (PE_module * cos(X)+4  * 6 * cos((X) * 12) ) * (2 * pi / periodo)/1.25, clyellow);
@@ -3661,7 +3736,7 @@ begin
   Serie.Title := 'Sinus';
     SL := TStringList.Create;
   try
-    SL.LoadFromFile('mypec.txt');
+    SL.LoadFromFile(s_inipath+'mypec.txt');
     for i := first to SL.Count - 1 do
     begin
       items := SplitString(SL[i], #9#32);
@@ -3670,7 +3745,7 @@ begin
 
     end;
      for i := first to SL.Count - 2 do
-      seriespd.AddXY(i-first,(serie.GetyValue(i-first+1)-(serie.GetyValue(i-first)))/1.25,clyellow);
+      seriespd.AddXY(i-first,(serie.GetyValue(i-first+1)-(serie.GetyValue(i-first)))*10,claqua);
 
 
   finally
@@ -3683,50 +3758,64 @@ procedure TMain.DrawPELine;
 var
   angle,X, Y, c: Integer;
   temp: string;
-
+ spdc:double;
   //angle:real ;
 begin
   Y := 500;
-  TAChartPEC.Canvas.MoveTo(linex, 0);
-  TAChartPEC.Canvas.LineTo(linex, Y);
+  //TAChartPEC.Canvas.MoveTo(linex, 0);
+ // TAChartPEC.Canvas.LineTo(linex, Y);
   // angle:=(tele.ArPos-tele.zeropec)mod tele.pe_size;
   // if angle<0 then angle:=360+angle;
   // label65.caption:=inttostr(angle);
-
+    label68.caption:=inttostr(picpec)+'  '+inttostr(tele.zeropec);
   // angle:=(angle*360)div tele.pe_size;
   angle := round(Tele.worm_angle);
-     Label65.Caption := inttostr(round(angle / (240/LongEditGearAr.Value ))) + #10#13 +
+{     Label65.Caption := inttostr(round(angle / (240/LongEditGearAr.Value ))) + #10#13 +
     Format('PE:%3f4"', [Serie.GetYValue(angle)]) + #10#13 +
-    Format('Speed:%3f4', [SIDERALF - seriespd.GetYValue(angle)]);
-  Canvas.Pen.Color := clwhite;
+    Format('Speed:%3f4', [SIDERALF - seriespd.GetYValue(angle)]);}
+ // Canvas.Pen.Color := clwhite;
   temp := Tele.ReturnAr(TRUE, Serie.GetYValue(angle));
   Label66.Caption := temp;
-  // tachartPEC.Repaint;
+ // tachartPEC.Repaint;
   TAChartPEC.Canvas.Pen.Mode := pmxor;
-   if (abs(Tele.target_ra_speed )<  (2*SIDERALF))then
+
+if (abs(Tele.target_ra_speed )< ((0.999+tele.GuideRate)*sideralf))and (abs(Tele.target_ra_speed )>=((1.0-tele.GuideRate)*sideralf)) then
+begin
+    spdc:=seriespd.GetYValue(angle)/10.0;//scale
+
      case tele.baserate of
     0:
-      tele.target_ra_speed := SIDERALF - seriespd.GetYValue(angle);
+      tele.target_ra_speed := SIDERALF - spdc;
     2:
-      tele.target_ra_speed := SOLARF- seriespd.GetYValue(angle);
+      tele.target_ra_speed := SOLARF- spdc;
     1:
-      tele.target_ra_speed := LUNARF - seriespd.GetYValue(angle);
+      tele.target_ra_speed := LUNARF - spdc;
     3:
-      tele.target_ra_speed := KINGF -seriespd.GetYValue(angle);
+      tele.target_ra_speed := KINGF -spdc;
     4:
       tele.target_ra_speed := 0;
   end;
+end;
  // Tele.target_ra_speed := SIDERALF - seriespd.GetYValue(angle);
  //  Tele.target_ra_speed
+{    Label65.Caption := inttostr(round(angle / (240/LongEditGearAr.Value ))) + #10#13 +
+    Format('PE:%3f4"', [Serie.GetYValue(angle)]) + #10#13 +
+    Format('Speed:%4f5', [tele.target_ra_speed ]);}
+   Label65.Caption := floattostr((angle / (240/LongEditGearAr.Value ))) + #10#13 +
+    Format('PE:%3f4"', [Serie.GetYValue(angle)]) + #10#13 +
+    Format('Speed:%4f5', [tele.target_ra_speed ]);
   c := 0; // Series1.CalcYPos( );
   With TAChartPEC do
   begin
-    X := Serie.GetXImgValue(angle);
+   X :=trunc( Serie.GetXImgValue(angle));
 
-    TAChartPEC.Canvas.MoveTo(X, c);
-    TAChartPEC.Canvas.LineTo(X, Y);
-    linex := X;
 
+ TAChartPEC.Canvas.MoveTo(linex, 0);
+ TAChartPEC.Canvas.LineTo(linex, Y);
+
+  TAChartPEC.Canvas.MoveTo(X, c);
+  TAChartPEC.Canvas.LineTo(X, Y);
+     linex := X;
   end;
   // label6.caption := floattostr(tele.ArStepSize/(tele.getraspeed*tele.RA_timertick));
 end;
