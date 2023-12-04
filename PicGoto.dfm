@@ -5,9 +5,9 @@ object Main: TMain
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsToolWindow
-  Caption = 'PicGoto++ Server v2.2.31'
-  ClientHeight = 294
-  ClientWidth = 517
+  Caption = 'PicGoto++ Server v2.2.34'
+  ClientHeight = 298
+  ClientWidth = 518
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -50,685 +50,27 @@ object Main: TMain
   PixelsPerInch = 96
   TextHeight = 15
   object Label67: TLabel
-    Left = 424
+    Left = 425
     Top = 4
     Width = 45
     Height = 15
     Caption = 'Label67'
     Visible = False
   end
-  object GroupBoxControl: TGroupBox
-    Left = 0
-    Top = 0
-    Width = 124
-    Height = 233
-    Caption = 'KeyPad'
-    Color = clBtnFace
-    Ctl3D = True
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -11
-    Font.Name = 'Arial'
-    Font.Style = []
-    ParentColor = False
-    ParentCtl3D = False
-    ParentFont = False
-    TabOrder = 0
-    StyleElements = []
-    OnMouseDown = Shape1MouseDown
-    object Label1: TLabel
-      Left = 112
-      Top = 344
-      Width = 32
-      Height = 14
-      Caption = 'Label1'
-    end
-    object Panel1: TPanel
-      Left = 6
-      Top = 11
-      Width = 115
-      Height = 114
-      Cursor = crArrow
-      BevelInner = bvLowered
-      BevelOuter = bvLowered
-      Ctl3D = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentColor = True
-      ParentCtl3D = False
-      ParentFont = False
-      TabOrder = 0
-      object Shape1: TShape
-        Left = 1
-        Top = 2
-        Width = 10
-        Height = 10
-        Brush.Color = clRed
-        Shape = stCircle
-        OnMouseDown = Shape1MouseDown
-      end
-      object ButtonNE: TButton
-        Left = 11
-        Top = 10
-        Width = 23
-        Height = 21
-        Caption = 'NE'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        OnMouseDown = ButtonNEMouseDown
-        OnMouseUp = ButtonNEMouseUp
-      end
-      object ButtonN: TButton
-        Left = 43
-        Top = 8
-        Width = 28
-        Height = 24
-        Caption = 'N'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 1
-        OnMouseDown = ButtonNMouseDown
-        OnMouseUp = ButtonNMouseUp
-      end
-      object ButtonNW: TButton
-        Tag = 1
-        Left = 80
-        Top = 11
-        Width = 23
-        Height = 21
-        Caption = 'NW'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 2
-        OnMouseDown = ButtonNEMouseDown
-        OnMouseUp = ButtonNEMouseUp
-      end
-      object ButtonW: TButton
-        Left = 78
-        Top = 38
-        Width = 28
-        Height = 24
-        Caption = 'W'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 3
-        OnMouseDown = ButtonWMouseDown
-        OnMouseUp = ButtonWMouseUp
-      end
-      object ButtonSW: TButton
-        Tag = 2
-        Left = 80
-        Top = 70
-        Width = 23
-        Height = 21
-        Caption = 'SW'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 4
-        OnMouseDown = ButtonNEMouseDown
-        OnMouseUp = ButtonNEMouseUp
-      end
-      object ButtonS: TButton
-        Left = 43
-        Top = 67
-        Width = 28
-        Height = 24
-        Caption = 'S'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 5
-        OnMouseDown = ButtonSMouseDown
-        OnMouseUp = ButtonNMouseUp
-      end
-      object ButtonH: TButton
-        Left = 44
-        Top = 33
-        Width = 26
-        Height = 16
-        Caption = 'H'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 6
-        OnClick = ButtonHClick
-      end
-      object ButtonE: TButton
-        Tag = 1
-        Left = 8
-        Top = 38
-        Width = 28
-        Height = 24
-        Caption = 'E'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 7
-        OnMouseDown = ButtonWMouseDown
-        OnMouseUp = ButtonWMouseUp
-      end
-      object ButtonSE: TButton
-        Tag = 3
-        Left = 11
-        Top = 69
-        Width = 23
-        Height = 21
-        Caption = 'SE'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 8
-        OnMouseDown = ButtonNEMouseDown
-        OnMouseUp = ButtonNEMouseUp
-      end
-      object RadioButtonSlew: TRadioButton
-        Tag = 4
-        Left = 2
-        Top = 92
-        Width = 28
-        Height = 17
-        Hint = 'Set Slew Speed'
-        Caption = 'S'
-        Ctl3D = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBtnText
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentCtl3D = False
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 9
-        OnClick = RadioButtonSpeed
-      end
-      object RadioButtonCenter: TRadioButton
-        Tag = 2
-        Left = 54
-        Top = 92
-        Width = 28
-        Height = 17
-        Hint = 'Set Center Speed'
-        Caption = 'C'
-        Ctl3D = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBtnText
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentCtl3D = False
-        ParentFont = False
-        TabOrder = 10
-        OnClick = RadioButtonSpeed
-      end
-      object RadioButtonFind: TRadioButton
-        Tag = 3
-        Left = 28
-        Top = 92
-        Width = 25
-        Height = 17
-        Hint = 'Set Find speed'
-        Caption = 'F'
-        Ctl3D = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBtnText
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentCtl3D = False
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 11
-        OnClick = RadioButtonSpeed
-      end
-      object RadioButtonGuide: TRadioButton
-        Tag = 1
-        Left = 81
-        Top = 93
-        Width = 30
-        Height = 15
-        Hint = 'Set Guide Speed'
-        Caption = 'G'
-        Checked = True
-        Ctl3D = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBtnText
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentCtl3D = False
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 12
-        TabStop = True
-        OnClick = RadioButtonSpeed
-      end
-      object ButtonPark: TButton
-        Left = 44
-        Top = 50
-        Width = 26
-        Height = 16
-        Hint = 'Park mount'
-        Caption = 'Park'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindow
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 13
-        OnClick = ButtonParkClick
-      end
-    end
-    object GroupBox11: TGroupBox
-      Left = 6
-      Top = 125
-      Width = 115
-      Height = 53
-      Caption = 'Focus'
-      Ctl3D = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Arial'
-      Font.Style = []
-      ParentCtl3D = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 1
-      object LabelFocusCount: TLabel
-        Left = 63
-        Top = 13
-        Width = 48
-        Height = 15
-        Alignment = taRightJustify
-        AutoSize = False
-        Caption = '0'
-        Color = clBlack
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clAqua
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-        Transparent = False
-        StyleElements = []
-        OnDblClick = LabelFocusCountDblClick
-      end
-      object Button4: TButton
-        Left = 34
-        Top = 14
-        Width = 24
-        Height = 16
-        Caption = 'Out'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        OnMouseDown = Button4MouseDown
-        OnMouseUp = Button4MouseUp
-      end
-      object Button5: TButton
-        Left = 6
-        Top = 14
-        Width = 24
-        Height = 16
-        Caption = 'In'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-        OnMouseDown = Button5MouseDown
-        OnMouseUp = Button4MouseUp
-      end
-      object Buttoneye1: TButton
-        Left = 6
-        Top = 34
-        Width = 24
-        Height = 16
-        Caption = 'M1'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 2
-        OnClick = Buttoneye1Click
-        OnContextPopup = Buttoneye1ContextPopup
-      end
-      object Buttoneye2: TButton
-        Left = 33
-        Top = 34
-        Width = 24
-        Height = 16
-        Caption = 'M2'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 3
-        OnClick = Buttoneye2Click
-        OnContextPopup = Buttoneye2ContextPopup
-      end
-      object Buttoneye3: TButton
-        Left = 60
-        Top = 34
-        Width = 24
-        Height = 16
-        Caption = 'M3'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 4
-        OnClick = Buttoneye3Click
-        OnContextPopup = Buttoneye3ContextPopup
-      end
-      object Buttoneye4: TButton
-        Left = 88
-        Top = 34
-        Width = 24
-        Height = 16
-        Caption = 'M4'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 5
-        OnClick = Buttoneye4Click
-        OnContextPopup = Buttoneye4ContextPopup
-      end
-    end
-    object GroupBox6: TGroupBox
-      Left = 6
-      Top = 178
-      Width = 115
-      Height = 54
-      Caption = 'Filter'
-      Ctl3D = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Arial'
-      Font.Style = []
-      ParentCtl3D = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 2
-      object LabelWheelCount: TLabel
-        Left = 61
-        Top = 13
-        Width = 48
-        Height = 15
-        Alignment = taRightJustify
-        AutoSize = False
-        Caption = '0'
-        Color = clBlack
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clAqua
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-        Transparent = False
-        StyleElements = []
-        OnDblClick = LabelWheelCountDblClick
-      end
-      object Buttonwheelcc: TButton
-        Left = 5
-        Top = 14
-        Width = 24
-        Height = 16
-        Caption = 'Cc'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        OnMouseDown = ButtonwheelccMouseDown
-        OnMouseUp = ButtonwheelccMouseUp
-      end
-      object Buttonwheelcw: TButton
-        Left = 34
-        Top = 14
-        Width = 24
-        Height = 16
-        Caption = 'Cw'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-        OnMouseDown = ButtonwheelcwMouseDown
-        OnMouseUp = ButtonwheelccMouseUp
-      end
-      object Buttonaux1: TButton
-        Tag = 1
-        Left = 17
-        Top = 35
-        Width = 14
-        Height = 16
-        Caption = 'R'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 2
-        OnClick = Buttonaux1Click
-        OnContextPopup = Buttonaux1ContextPopup
-      end
-      object Buttonaux2: TButton
-        Tag = 2
-        Left = 31
-        Top = 35
-        Width = 14
-        Height = 16
-        Caption = 'G'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 3
-        OnClick = Buttonaux2Click
-        OnContextPopup = Buttonaux2ContextPopup
-      end
-      object Buttonaux3: TButton
-        Tag = 3
-        Left = 44
-        Top = 35
-        Width = 14
-        Height = 16
-        Caption = 'B'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 4
-        OnClick = Buttonaux3Click
-        OnContextPopup = Buttonaux3ContextPopup
-      end
-      object Buttonaux4: TButton
-        Tag = 4
-        Left = 58
-        Top = 35
-        Width = 14
-        Height = 16
-        Caption = '1'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 5
-        OnClick = Buttonaux4Click
-        OnContextPopup = Buttonaux4ContextPopup
-      end
-      object Buttonaux5: TButton
-        Tag = 5
-        Left = 71
-        Top = 35
-        Width = 14
-        Height = 16
-        Caption = '2'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 6
-        OnClick = Buttonaux5Click
-        OnContextPopup = Buttonaux5ContextPopup
-      end
-      object Buttonaux6: TButton
-        Left = 4
-        Top = 35
-        Width = 14
-        Height = 16
-        Caption = 'L'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 7
-        OnClick = Buttonaux6Click
-        OnContextPopup = Buttonaux6ContextPopup
-      end
-      object Buttonaux8: TButton
-        Tag = 7
-        Left = 99
-        Top = 35
-        Width = 14
-        Height = 16
-        Caption = '4'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 8
-        OnClick = Buttonaux8Click
-        OnContextPopup = Buttonaux8ContextPopup
-      end
-      object Buttonaux7: TButton
-        Tag = 6
-        Left = 84
-        Top = 35
-        Width = 14
-        Height = 16
-        Caption = '3'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 9
-        OnClick = Buttonaux7Click
-        OnContextPopup = Buttonaux7ContextPopup
-      end
-    end
-    object Button21: TButton
-      Left = 55
-      Top = 3
-      Width = 16
-      Height = 14
-      Caption = '+'
-      TabOrder = 3
-      OnClick = Button21Click
-    end
-  end
   object PageControlConf: TPageControl
-    Left = 123
+    Left = 124
     Top = 0
     Width = 394
     Height = 242
     Hint = 'Set Coords'
-    ActivePage = TabSheet4
+    ActivePage = TabSheet8
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Controls'
       object GroupBoxPosition: TGroupBox
@@ -996,9 +338,9 @@ object Main: TMain
             Text = '00h00m00s'
           end
           object MaskEditDec: TMaskEdit
-            Left = 7
+            Left = 9
             Top = 30
-            Width = 74
+            Width = 76
             Height = 16
             Hint = 'Dec Input'
             AutoSelect = False
@@ -1372,8 +714,8 @@ object Main: TMain
           TabOrder = 6
           object RadioButtonSolar: TRadioButton
             Tag = 2
-            Left = 3
-            Top = 25
+            Left = 5
+            Top = 28
             Width = 50
             Height = 12
             Caption = 'Solar'
@@ -1382,8 +724,8 @@ object Main: TMain
           end
           object RadioButtonlunar: TRadioButton
             Tag = 1
-            Left = 3
-            Top = 40
+            Left = 5
+            Top = 43
             Width = 47
             Height = 12
             Caption = 'Lunar'
@@ -1391,8 +733,8 @@ object Main: TMain
             OnClick = RadioButtonsidClick
           end
           object RadioButtonsid: TRadioButton
-            Left = 3
-            Top = 11
+            Left = 5
+            Top = 14
             Width = 55
             Height = 12
             Caption = 'Sideral'
@@ -1403,8 +745,8 @@ object Main: TMain
           end
           object RadioButtonking: TRadioButton
             Tag = 3
-            Left = 3
-            Top = 55
+            Left = 5
+            Top = 58
             Width = 42
             Height = 12
             Caption = 'King'
@@ -1413,8 +755,8 @@ object Main: TMain
           end
           object RadioButton1: TRadioButton
             Tag = 4
-            Left = 48
-            Top = 55
+            Left = 50
+            Top = 58
             Width = 42
             Height = 12
             Caption = 'Zero'
@@ -1508,7 +850,7 @@ object Main: TMain
       Caption = 'Mount'
       ImageIndex = 1
       object GroupBoxAxis: TGroupBox
-        Left = 0
+        Left = 1
         Top = -1
         Width = 237
         Height = 125
@@ -1524,11 +866,18 @@ object Main: TMain
         ShowHint = True
         TabOrder = 0
         object Label4: TLabel
-          Left = 84
-          Top = 79
+          Left = 86
+          Top = 77
+          Width = 30
+          Height = 14
+          Caption = '44444'
+        end
+        object Label7: TLabel
+          Left = 136
+          Top = 107
           Width = 36
           Height = 14
-          Caption = 'Label4'
+          Caption = '000000'
         end
         object LongEditGearAr: TLongEdit
           Left = 21
@@ -2554,7 +1903,8 @@ object Main: TMain
             '9600'
             '19200'
             '38400'
-            '57600')
+            '57600'
+            '115200')
         end
         object StaticText6: TStaticText
           Left = 4
@@ -2647,14 +1997,15 @@ object Main: TMain
         end
       end
       object GroupBoxHost: TGroupBox
-        Left = -3
-        Top = 79
+        Left = -4
+        Top = 76
         Width = 202
-        Height = 39
+        Height = 55
+        Hint = 'Encoder IP'
         Caption = 'Host Server IP/PORT'
         TabOrder = 1
         object EditAddr: TEdit
-          Left = 5
+          Left = 4
           Top = 13
           Width = 57
           Height = 20
@@ -2664,7 +2015,7 @@ object Main: TMain
           Text = '127.0.0.1'
         end
         object ButtonListen: TButton
-          Left = 104
+          Left = 111
           Top = 13
           Width = 41
           Height = 20
@@ -2672,7 +2023,7 @@ object Main: TMain
           TabOrder = 1
         end
         object ButtonServerClose: TButton
-          Left = 147
+          Left = 155
           Top = 13
           Width = 43
           Height = 20
@@ -2682,7 +2033,7 @@ object Main: TMain
         object LongEditPort: TLongEdit
           Left = 64
           Top = 13
-          Width = 36
+          Width = 44
           Height = 20
           Hint = '0..100000'
           Ctl3D = False
@@ -2692,6 +2043,16 @@ object Main: TMain
           TabOrder = 3
           Value = 10001
           MaxValue = 100000
+        end
+        object EditUDPaddr: TEdit
+          Left = 5
+          Top = 34
+          Width = 75
+          Height = 20
+          Ctl3D = False
+          ParentCtl3D = False
+          TabOrder = 4
+          Text = '192.168.1.109'
         end
       end
       object GroupBox5: TGroupBox
@@ -2863,8 +2224,8 @@ object Main: TMain
         end
       end
       object GroupBox16: TGroupBox
-        Left = 0
-        Top = 118
+        Left = -1
+        Top = 130
         Width = 196
         Height = 37
         Caption = 'Reset '
@@ -2879,8 +2240,8 @@ object Main: TMain
           OnClick = CheckBox3Click
         end
         object Buttonenableres: TButton
-          Left = 3
-          Top = 13
+          Left = 1
+          Top = 14
           Width = 86
           Height = 20
           Caption = 'Reset PIC Enc.'
@@ -2915,8 +2276,8 @@ object Main: TMain
         end
       end
       object GroupBox20: TGroupBox
-        Left = 2
-        Top = 158
+        Left = -2
+        Top = 161
         Width = 193
         Height = 53
         Caption = 'Style'
@@ -4214,8 +3575,8 @@ object Main: TMain
         Caption = 'Stepper Settings'
         TabOrder = 1
         object Label11: TLabel
-          Left = 21
-          Top = 62
+          Left = 51
+          Top = 65
           Width = 26
           Height = 14
           Alignment = taRightJustify
@@ -4264,12 +3625,26 @@ object Main: TMain
           Caption = 'DE'
         end
         object Label63: TLabel
-          Left = 21
-          Top = 85
+          Left = 51
+          Top = 88
           Width = 25
           Height = 14
           Alignment = taRightJustify
           Caption = '0x/0"'
+        end
+        object Label15: TLabel
+          Left = 186
+          Top = 12
+          Width = 36
+          Height = 14
+          Caption = '000000'
+        end
+        object Label64: TLabel
+          Left = 186
+          Top = 24
+          Width = 36
+          Height = 14
+          Caption = '000000'
         end
         object Button6: TButton
           Left = 335
@@ -4289,8 +3664,8 @@ object Main: TMain
           Value = 15.010000000000000000
         end
         object TrackBar1: TTrackBar
-          Left = 51
-          Top = 59
+          Left = 73
+          Top = 63
           Width = 301
           Height = 19
           Max = 720
@@ -4316,8 +3691,8 @@ object Main: TMain
           OnClick = Button9Click
         end
         object TrackBar2: TTrackBar
-          Left = 51
-          Top = 82
+          Left = 73
+          Top = 85
           Width = 301
           Height = 19
           Max = 720
@@ -4383,9 +3758,9 @@ object Main: TMain
           MaxValue = 1500
         end
         object CheckBoxZone: TCheckBox
-          Left = 107
-          Top = 35
-          Width = 84
+          Left = 101
+          Top = 34
+          Width = 79
           Height = 15
           Caption = 'Enable Zone'
           TabOrder = 11
@@ -4612,10 +3987,11 @@ object Main: TMain
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           ShowAxisLabel = False
-          ShowVerticalReticule = True
+          ShowVerticalReticule = False
           ShowReticule = False
           Color = clGray
           ParentColor = False
+          AutoSize = True
         end
       end
     end
@@ -4623,9 +3999,9 @@ object Main: TMain
       Caption = 'Align'
       ImageIndex = 8
       object GroupBox17: TGroupBox
-        Left = 6
-        Top = 4
-        Width = 377
+        Left = 1
+        Top = -2
+        Width = 382
         Height = 109
         Caption = 'Align'
         TabOrder = 0
@@ -4802,8 +4178,8 @@ object Main: TMain
         end
       end
       object RadioGroup1: TRadioGroup
-        Left = 3
-        Top = 106
+        Left = 1
+        Top = 108
         Width = 163
         Height = 87
         Caption = 'RadioGroup1'
@@ -4825,9 +4201,9 @@ object Main: TMain
     end
   end
   object GroupBoxcoords: TGroupBox
-    Left = 0
-    Top = 235
-    Width = 124
+    Left = 1
+    Top = 240
+    Width = 121
     Height = 58
     Caption = 'Coords'
     Font.Charset = ANSI_CHARSET
@@ -4836,7 +4212,7 @@ object Main: TMain
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
     Visible = False
     object labelAR: TLabel
       Left = 6
@@ -4877,72 +4253,12 @@ object Main: TMain
       StyleElements = [seBorder]
     end
   end
-  object Buttonclose: TButton
-    Left = 108
-    Top = 4
-    Width = 16
-    Height = 14
-    Hint = 'Exit'
-    BiDiMode = bdRightToLeft
-    Caption = ' x'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    ParentBiDiMode = False
-    ParentFont = False
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 3
-    OnContextPopup = ButtoncloseContextPopup
-  end
-  object Button17: TButton
-    Left = 91
-    Top = 4
-    Width = 16
-    Height = 14
-    Hint = 'Minimize'
-    BiDiMode = bdRightToLeft
-    Caption = '-'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    ParentBiDiMode = False
-    ParentFont = False
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 4
-    OnClick = Button17Click
-  end
-  object Buttonfold: TButton
-    Left = 76
-    Top = 4
-    Width = 16
-    Height = 14
-    Hint = 'Fold'
-    BiDiMode = bdRightToLeft
-    Caption = '/'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    ParentBiDiMode = False
-    ParentFont = False
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 5
-    OnClick = ButtonfoldClick
-  end
   object Panel3: TPanel
-    Left = 125
+    Left = 126
     Top = 248
     Width = 392
     Height = 46
-    TabOrder = 6
+    TabOrder = 2
     Visible = False
     object Label65: TLabel
       Left = 15
@@ -4958,7 +4274,7 @@ object Main: TMain
       ParentFont = False
     end
     object Label66: TLabel
-      Left = 108
+      Left = 74
       Top = 2
       Width = 12
       Height = 14
@@ -4971,8 +4287,8 @@ object Main: TMain
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 184
-      Top = 28
+      Left = 186
+      Top = 15
       Width = 103
       Height = 14
       Caption = '  mag1  mag2   phase'
@@ -4982,6 +4298,26 @@ object Main: TMain
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 237
+      Top = 29
+      Width = 24
+      Height = 14
+      Caption = '1024'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label68: TLabel
+      Left = 94
+      Top = 21
+      Width = 45
+      Height = 15
+      Caption = 'Label68'
     end
     object Button20: TButton
       Left = 339
@@ -4999,8 +4335,8 @@ object Main: TMain
       OnClick = Button20Click
     end
     object Button19: TButton
-      Left = 339
-      Top = 0
+      Left = 338
+      Top = -1
       Width = 50
       Height = 15
       Caption = 'Reset'
@@ -5014,8 +4350,8 @@ object Main: TMain
       OnClick = Button19Click
     end
     object CheckBoxPec: TCheckBox
-      Left = 293
-      Top = 24
+      Left = 146
+      Top = 0
       Width = 40
       Height = 17
       Caption = 'PEC'
@@ -5026,6 +4362,7 @@ object Main: TMain
       Font.Style = []
       ParentFont = False
       TabOrder = 2
+      OnClick = CheckBoxPecClick
     end
     object Button13: TButton
       Left = 339
@@ -5046,7 +4383,7 @@ object Main: TMain
       Left = 184
       Top = 0
       Width = 32
-      Height = 22
+      Height = 16
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -5069,7 +4406,7 @@ object Main: TMain
       Left = 221
       Top = 0
       Width = 33
-      Height = 22
+      Height = 16
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -5083,7 +4420,7 @@ object Main: TMain
       Left = 258
       Top = 0
       Width = 29
-      Height = 22
+      Height = 15
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -5092,6 +4429,727 @@ object Main: TMain
       ParentFont = False
       TabOrder = 7
       Value = 4.000000000000000000
+    end
+    object Button24: TButton
+      Left = 268
+      Top = 27
+      Width = 69
+      Height = 18
+      Caption = 'Get encoder'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      StylusHotImageIndex = 30
+      TabOrder = 8
+      OnClick = Button24Click
+    end
+  end
+  object GroupBox21: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 121
+    Height = 242
+    Caption = 'KeyPad'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    OnMouseDown = Shape1MouseDown
+    object Panel1: TPanel
+      Left = 3
+      Top = 12
+      Width = 115
+      Height = 110
+      Cursor = crArrow
+      BevelOuter = bvLowered
+      Ctl3D = True
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentColor = True
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 2
+      object Shape1: TShape
+        Left = 1
+        Top = 2
+        Width = 10
+        Height = 10
+        Brush.Color = clRed
+        Shape = stCircle
+        OnMouseDown = Shape1MouseDown
+      end
+      object ButtonNE: TButton
+        Left = 11
+        Top = 10
+        Width = 23
+        Height = 21
+        Caption = 'NE'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnMouseDown = ButtonNEMouseDown
+        OnMouseUp = ButtonNEMouseUp
+      end
+      object ButtonN: TButton
+        Left = 43
+        Top = 8
+        Width = 28
+        Height = 24
+        Caption = 'N'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        OnMouseDown = ButtonNMouseDown
+        OnMouseUp = ButtonNMouseUp
+      end
+      object ButtonNW: TButton
+        Tag = 1
+        Left = 80
+        Top = 11
+        Width = 23
+        Height = 21
+        Caption = 'NW'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+        OnMouseDown = ButtonNEMouseDown
+        OnMouseUp = ButtonNEMouseUp
+      end
+      object ButtonW: TButton
+        Left = 78
+        Top = 38
+        Width = 28
+        Height = 24
+        Caption = 'W'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 3
+        OnMouseDown = ButtonWMouseDown
+        OnMouseUp = ButtonWMouseUp
+      end
+      object ButtonSW: TButton
+        Tag = 2
+        Left = 80
+        Top = 70
+        Width = 23
+        Height = 21
+        Caption = 'SW'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        OnMouseDown = ButtonNEMouseDown
+        OnMouseUp = ButtonNEMouseUp
+      end
+      object ButtonS: TButton
+        Left = 43
+        Top = 67
+        Width = 28
+        Height = 24
+        Caption = 'S'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 5
+        OnMouseDown = ButtonSMouseDown
+        OnMouseUp = ButtonNMouseUp
+      end
+      object ButtonH: TButton
+        Left = 44
+        Top = 33
+        Width = 26
+        Height = 16
+        Caption = 'H'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 6
+        OnClick = ButtonHClick
+      end
+      object ButtonE: TButton
+        Tag = 1
+        Left = 8
+        Top = 38
+        Width = 28
+        Height = 24
+        Caption = 'E'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 7
+        OnMouseDown = ButtonWMouseDown
+        OnMouseUp = ButtonWMouseUp
+      end
+      object ButtonSE: TButton
+        Tag = 3
+        Left = 11
+        Top = 69
+        Width = 23
+        Height = 21
+        Caption = 'SE'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 8
+        OnMouseDown = ButtonNEMouseDown
+        OnMouseUp = ButtonNEMouseUp
+      end
+      object RadioButtonSlew: TRadioButton
+        Tag = 4
+        Left = 2
+        Top = 92
+        Width = 28
+        Height = 17
+        Hint = 'Set Slew Speed'
+        Caption = 'S'
+        Ctl3D = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBtnText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentCtl3D = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 9
+        OnClick = RadioButtonSpeed
+      end
+      object RadioButtonCenter: TRadioButton
+        Tag = 2
+        Left = 54
+        Top = 92
+        Width = 28
+        Height = 17
+        Hint = 'Set Center Speed'
+        Caption = 'C'
+        Ctl3D = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBtnText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 10
+        OnClick = RadioButtonSpeed
+      end
+      object RadioButtonFind: TRadioButton
+        Tag = 3
+        Left = 28
+        Top = 92
+        Width = 25
+        Height = 17
+        Hint = 'Set Find speed'
+        Caption = 'F'
+        Ctl3D = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBtnText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentCtl3D = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 11
+        OnClick = RadioButtonSpeed
+      end
+      object RadioButtonGuide: TRadioButton
+        Tag = 1
+        Left = 81
+        Top = 93
+        Width = 30
+        Height = 15
+        Hint = 'Set Guide Speed'
+        Caption = 'G'
+        Checked = True
+        Ctl3D = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBtnText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentCtl3D = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 12
+        TabStop = True
+        OnClick = RadioButtonSpeed
+      end
+      object ButtonPark: TButton
+        Left = 44
+        Top = 50
+        Width = 26
+        Height = 16
+        Hint = 'Park mount'
+        Caption = 'Park'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindow
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 13
+        OnClick = ButtonParkClick
+      end
+    end
+    object GroupBox11: TGroupBox
+      Left = 2
+      Top = 122
+      Width = 115
+      Height = 59
+      Caption = 'Focus'
+      Ctl3D = True
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 0
+      object LabelFocusCount: TLabel
+        Left = 63
+        Top = 15
+        Width = 48
+        Height = 15
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '0'
+        Color = clBlack
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clAqua
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        Transparent = False
+        StyleElements = []
+        OnDblClick = LabelFocusCountDblClick
+      end
+      object Button4: TButton
+        Left = 34
+        Top = 14
+        Width = 24
+        Height = 16
+        Caption = 'Out'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnMouseDown = Button4MouseDown
+        OnMouseUp = Button4MouseUp
+      end
+      object Button5: TButton
+        Left = 6
+        Top = 14
+        Width = 24
+        Height = 16
+        Caption = 'In'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        OnMouseDown = Button5MouseDown
+        OnMouseUp = Button4MouseUp
+      end
+      object Buttoneye1: TButton
+        Left = 6
+        Top = 34
+        Width = 24
+        Height = 16
+        Caption = 'M1'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 2
+        OnClick = Buttoneye1Click
+        OnContextPopup = Buttoneye1ContextPopup
+      end
+      object Buttoneye2: TButton
+        Left = 33
+        Top = 34
+        Width = 24
+        Height = 16
+        Caption = 'M2'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 3
+        OnClick = Buttoneye2Click
+        OnContextPopup = Buttoneye2ContextPopup
+      end
+      object Buttoneye3: TButton
+        Left = 60
+        Top = 34
+        Width = 24
+        Height = 16
+        Caption = 'M3'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 4
+        OnClick = Buttoneye3Click
+        OnContextPopup = Buttoneye3ContextPopup
+      end
+      object Buttoneye4: TButton
+        Left = 88
+        Top = 34
+        Width = 24
+        Height = 16
+        Caption = 'M4'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 5
+        OnClick = Buttoneye4Click
+        OnContextPopup = Buttoneye4ContextPopup
+      end
+    end
+    object Buttonfold: TButton
+      Left = 75
+      Top = 3
+      Width = 16
+      Height = 14
+      Hint = 'Fold'
+      BiDiMode = bdRightToLeft
+      Caption = '/'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+      OnClick = ButtonfoldClick
+    end
+    object Button17: TButton
+      Left = 90
+      Top = 3
+      Width = 16
+      Height = 14
+      Hint = 'Minimize'
+      BiDiMode = bdRightToLeft
+      Caption = '-'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 4
+      OnClick = Button17Click
+    end
+    object Buttonclose: TButton
+      Left = 105
+      Top = 3
+      Width = 16
+      Height = 14
+      Hint = 'Exit'
+      BiDiMode = bdRightToLeft
+      Caption = ' x'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+      OnContextPopup = ButtoncloseContextPopup
+    end
+    object Button21: TButton
+      Left = 58
+      Top = 3
+      Width = 16
+      Height = 14
+      Caption = '+'
+      TabOrder = 6
+      OnClick = Button21Click
+    end
+    object GroupBox6: TGroupBox
+      Left = 2
+      Top = 181
+      Width = 115
+      Height = 54
+      Caption = 'Filter'
+      Ctl3D = True
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 1
+      object LabelWheelCount: TLabel
+        Left = 61
+        Top = 14
+        Width = 48
+        Height = 15
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '0'
+        Color = clBlack
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clAqua
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        Transparent = False
+        StyleElements = []
+        OnDblClick = LabelWheelCountDblClick
+      end
+      object Buttonwheelcc: TButton
+        Left = 5
+        Top = 14
+        Width = 24
+        Height = 16
+        Caption = 'Cc'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnMouseDown = ButtonwheelccMouseDown
+        OnMouseUp = ButtonwheelccMouseUp
+      end
+      object Buttonwheelcw: TButton
+        Left = 34
+        Top = 14
+        Width = 24
+        Height = 16
+        Caption = 'Cw'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        OnMouseDown = ButtonwheelcwMouseDown
+        OnMouseUp = ButtonwheelccMouseUp
+      end
+      object Buttonaux1: TButton
+        Tag = 1
+        Left = 17
+        Top = 35
+        Width = 14
+        Height = 16
+        Caption = 'R'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+        OnClick = Buttonaux1Click
+        OnContextPopup = Buttonaux1ContextPopup
+      end
+      object Buttonaux2: TButton
+        Tag = 2
+        Left = 31
+        Top = 35
+        Width = 14
+        Height = 16
+        Caption = 'G'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+        OnClick = Buttonaux2Click
+        OnContextPopup = Buttonaux2ContextPopup
+      end
+      object Buttonaux3: TButton
+        Tag = 3
+        Left = 44
+        Top = 35
+        Width = 14
+        Height = 16
+        Caption = 'B'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        OnClick = Buttonaux3Click
+        OnContextPopup = Buttonaux3ContextPopup
+      end
+      object Buttonaux4: TButton
+        Tag = 4
+        Left = 58
+        Top = 35
+        Width = 14
+        Height = 16
+        Caption = '1'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+        OnClick = Buttonaux4Click
+        OnContextPopup = Buttonaux4ContextPopup
+      end
+      object Buttonaux5: TButton
+        Tag = 5
+        Left = 71
+        Top = 35
+        Width = 14
+        Height = 16
+        Caption = '2'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 6
+        OnClick = Buttonaux5Click
+        OnContextPopup = Buttonaux5ContextPopup
+      end
+      object Buttonaux6: TButton
+        Left = 4
+        Top = 35
+        Width = 14
+        Height = 16
+        Caption = 'L'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 7
+        OnClick = Buttonaux6Click
+        OnContextPopup = Buttonaux6ContextPopup
+      end
+      object Buttonaux8: TButton
+        Tag = 7
+        Left = 99
+        Top = 35
+        Width = 14
+        Height = 16
+        Caption = '4'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 8
+        OnClick = Buttonaux8Click
+        OnContextPopup = Buttonaux8ContextPopup
+      end
+      object Buttonaux7: TButton
+        Tag = 6
+        Left = 85
+        Top = 35
+        Width = 14
+        Height = 16
+        Caption = '3'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 9
+        OnClick = Buttonaux7Click
+        OnContextPopup = Buttonaux7ContextPopup
+      end
     end
   end
   object DdeClientConv1: TDdeClientConv
@@ -5124,27 +5182,38 @@ object Main: TMain
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 265
-    Top = 269
+    Left = 251
+    Top = 255
   end
   object adpInstanceControl1: TadpInstanceControl
     Enabled = True
     MaxInstances = 1
-    Left = 265
-    Top = 265
+    Left = 246
+    Top = 252
   end
   object JvHidDeviceController: TJvHidDeviceController
     DevPollingDelayTime = 10
     OnEnumerate = JvHidDeviceControllerEnumerate
     OnDeviceChange = JvHidDeviceControllerDeviceChange
-    Left = 272
-    Top = 261
+    Left = 241
+    Top = 252
   end
   object lx200server: TServerSocket
     Active = False
     Port = 0
     ServerType = stNonBlocking
-    Left = 270
-    Top = 264
+    Left = 244
+    Top = 255
+  end
+  object IdUDPClientEnc: TIdUDPClient
+    Active = True
+    BufferSize = 1024
+    BroadcastEnabled = True
+    Host = '192.168.1.109'
+    Port = 8888
+    ReceiveTimeout = 40
+    ReuseSocket = rsFalse
+    Left = 235
+    Top = 253
   end
 end
