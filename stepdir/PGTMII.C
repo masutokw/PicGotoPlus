@@ -23,7 +23,7 @@
 #define  MIDSTEP_RA  (STEPS_RA/2)-1
 #define  MIDSTEP_DEC (STEPS_DEC/2)-1
 #define  UNIPOLAR
-//#define RA_PIC
+#define RA_PIC
 #ifdef RA_PIC
 #define SELF_CODE 254
 #define VERTICAL 0x00
@@ -34,7 +34,7 @@
 #define RUN 0x00
 #endif
 #define BACKSLASH
-//#define ENABLE_LOW
+#define ENABLE_LOW
 char static temp1;
 	#define NDelayUs\
 	asm("\tDECFSZ _temp1,w");\
@@ -52,7 +52,7 @@ bank1 struct { unsigned ra_speeds[6]; int dec_speeds[2];}speeds;
 //bank1 static char ra_post[4];
 
  
-volatile unsigned TMR1 @ 0x0E;
+//volatile unsigned TMR1 @ 0x0E;
 //volatile unsigned TMR0 @ 0x01;
 volatile char   buffer,
                 state;
@@ -83,8 +83,8 @@ struct{  long  ra_encoder_res,
 				char msg;
 				long time; 
 				} count;
-bank2 static long pec;
-static long               dec_goto_count,ra_goto_count, ltemp;
+//bank2 static long pec;
+static long               dec_goto_count,ra_goto_count, ltemp,pec;
                 //dec_encoder_res,
 
 
@@ -121,6 +121,7 @@ bit high_volt_bit;
 bit vertical;
 bit backa,backd;
 bit vhigh_ra_bit;
+bit pec_bit;
 
 //static volatile bit	arbit	@(unsigned)&h*8+0
 //--------------------------------------------------------------------------------
@@ -142,7 +143,15 @@ void  main(void)
 {//auto char h;
     // Desabilita Wachtdog Timer,low voltage programming, y habilitamos High
     // Speed
-    __CONFIG( HS & WDTDIS & LVPDIS & MCLRDIS & BORDIS);
+ //   __CONFIG( HS & WDTDIS & LVPDIS & MCLRDIS & BORDIS);
+#pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator)
+#pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
+#pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
+#pragma config CP = OFF         // FLASH Program Memory Code Protection bits (Code protection off)
+#pragma config BOREN = OFF       // Brown-out Reset Enable bit (BOR enabled)
+#pragma config LVP = OFF        // Low Voltage In-Circuit Serial Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
+#pragma config MCLRE = OFF        // Data EE Memory Code Protection (Code Protection off)
+
 	GIE=0;
     //--------------------------------------------------------------------------
     // Configuracion de los registros para USART salidas
@@ -171,7 +180,7 @@ void  main(void)
     PORTA = 0;
     PORTB = 4;
     TRISA = 0x0;
-    TRISB = 0b00000010;
+    TRISB = 0b00000011;
  	SPBRG=BAUD_RATE_19200;
 
 
@@ -188,7 +197,7 @@ void  main(void)
   	//  CCPR1L = 128;
    T2CON = 0b00000100;
 	 //  T2CON = 0b00001100;
-    count.msg = 44;
+    count.msg = SELF_CODE;
     //CCP1CON = 0b00001100;
 	CCP1CON = 0b00000000;
     INTCON = 0;
@@ -198,7 +207,7 @@ void  main(void)
     TMR1IE=0;
 	TMR2IE = 0;
     half_ra_bit=0;
-	
+	INTEDG=0;
     frev = 0xf6;
     ra.ra_current_mstep_period = speeds.ra_speeds[4];
 	GIE=1;
@@ -214,7 +223,7 @@ void  main(void)
 			TMR1 = ra.ra_current_mstep_period + TMR1;
 			if (TMR1<ra.ra_current_mstep_period) TMR1 = ra.ra_current_mstep_period ;
             TMR1ON = 1;
-
+			if (INTF) {if (pec_bit=(ra.ra_dir==1))  pec=count.ra_enc_count ;INTF=0;} 
 
      if (--post_ar==0)
 		{
@@ -338,7 +347,7 @@ void  main(void)
         }
 
         if (T0IF) {
-			count.time++;
+		//	count.time++;
 		    dec_period_counter++;//RB3=!RB3;
             pasAR = (dec_period_counter == dec_current_mstep_period);
 			//TMR0=170+TMR0;
